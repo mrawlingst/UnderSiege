@@ -1,6 +1,9 @@
 # Under Siege
 by Morris Slone, Thomas Bowling, Michael Rawlings
 
+## Develop Branch
+From now on, use develop branch for all changes.
+
 ## UnderSiege.bat
 Save a copy of this file in your W: drive.
 
