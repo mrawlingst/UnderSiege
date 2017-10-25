@@ -12,4 +12,4 @@ git clone https://code.eku.edu/michael_rawlings6/UnderSiege.git C:\Users\ekustud
 start /d "C:\Program Files\Unity\Editor" Unity.exe
 
 :: Start new cmd at repo's folder and on develop branch
-start cmd.exe /k "cd /d C:\Users\ekustudent\Desktop\UnderSiege & git checkout develop"
+start cmd.exe /k "cd /d C:\Users\ekustudent\Desktop\UnderSiege & git checkout -b develop origin/develop"
