@@ -3,10 +3,12 @@
 public class SpawnManager : MonoBehaviour
 {
     public GameObject enemyToSpawn;
+    public float spawnTime = 3f;
+    public int maxEnemy = 20;
 
 	void Start ()
     {
-        InvokeRepeating("SpawnEnemy", 3f, 3f);
+        InvokeRepeating("SpawnEnemy", spawnTime, spawnTime);
 	}
 	
 	void Update ()
@@ -16,7 +18,10 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnEnemy()
     {
-        
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemies.Length > maxEnemy)
+            return;
+
         var enemy = GameObject.Instantiate(enemyToSpawn, transform.position, transform.rotation);
     }
 }
