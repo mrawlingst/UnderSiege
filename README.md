@@ -1,5 +1,5 @@
 # Under Siege
-by Morris Slone, Thomas Bowling, Michael Rawlings
+by Morris Slone, Thomas Bowlin, Michael Rawlings, Diego Asis
 
 ## Develop Branch
 From now on, use develop branch for all changes.
