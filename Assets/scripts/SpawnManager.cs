@@ -19,7 +19,7 @@ public class SpawnManager : MonoBehaviour
     void SpawnEnemy()
     {
         var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if (enemies.Length > maxEnemy)
+        if (enemies.Length > maxEnemy - 1)
             return;
 
         var enemy = GameObject.Instantiate(enemyToSpawn, transform.position, transform.rotation);
