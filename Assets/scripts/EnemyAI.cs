@@ -28,6 +28,11 @@ public class EnemyAI : MonoBehaviour
                 }
             }
         }
+
+        if (GetComponent<Enemy>().dead && !agent.isStopped)
+        {
+            agent.isStopped = true;
+        }
     }
 
     void changeAnimation()

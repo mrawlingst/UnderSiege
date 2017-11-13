@@ -5,6 +5,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int health = 100;
+    public int deathTime = 3;
+
+    public bool dead = false;
 
 	void Start ()
     {
@@ -13,8 +16,13 @@ public class Enemy : MonoBehaviour
 	
 	void Update ()
     {
-		
-	}
+        if (health <= 0 && !dead)
+        {
+            dead = true;
+            GetComponent<Animator>().Play("Death");
+            Destroy(gameObject, deathTime);
+        }
+    }
 
     public void OnTriggerEnter(Collider other)
     {
@@ -22,7 +30,8 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            GetComponent<Animator>().Play("Death");
+            Destroy(gameObject, 10);
         }
     }
 
