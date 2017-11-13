@@ -1,23 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CastleManager : MonoBehaviour
 {
-    private int castleHealth = 5;
+    public int CastleHealth = 20;
 
-	void Start ()
+    public void TakeDamage(int damage)
     {
-		
-	}
-	
-	void Update ()
-    {
-		
-	}
+        CastleHealth -= damage;
 
-    public int getHealth()
+        if (CastleHealth <= 0)
+        {
+            //something
+       } 
+    }
+
+    void OnTriggerEnter(Collider other)
     {
-        return castleHealth;
+        if (other.gameObject.tag == "enemyattack")
+        {
+            Debug.Log("EnemyAttack");
+            TakeDamage(1);
+        }
     }
 }
