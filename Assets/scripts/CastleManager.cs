@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CastleManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class CastleManager : MonoBehaviour
 
         if (CastleHealth <= 0)
         {
-            //something
+            SceneManager.LoadScene(1);
        } 
     }
 
