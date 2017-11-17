@@ -20,6 +20,7 @@ public class ControllerGrabObject : MonoBehaviour
     private void Awake()
     {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
+        holding = false;
     }
 
     private void SetCollidingObject(Collider col)
@@ -87,18 +88,28 @@ public class ControllerGrabObject : MonoBehaviour
     {
         if (Controller.GetHairTriggerDown())
         {
-            if (collidingObject)
+            if (collidingObject && !objectInHand)
             {
                 GrabObject();
             }
-        }
-
-        if (Controller.GetHairTriggerUp())
-        {
-            if (objectInHand)
+            else if (objectInHand)
             {
                 ReleaseObject();
             }
+        }
+
+        //if (Controller.GetHairTriggerUp())
+        //{
+        //    if (objectInHand)
+        //    {
+        //        ReleaseObject();
+        //    }
+        //}
+
+        if (Controller.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
+        {
+            GameObject sword = GameObject.FindGameObjectWithTag("pickup");
+            sword.transform.localPosition = new Vector3(-3.5f, 0, -1.5f);
         }
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - FxTemporaire
   - projectile
   - enemyattack
+  - pickup
   layers:
   - Default
   - TransparentFX
