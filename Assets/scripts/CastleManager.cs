@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class CastleManager : MonoBehaviour
 {
     public int maxCastleHealth = 20;
-    public int CastleHealth = 20;
+    private int CastleHealth = 20;
 
     public Light light;
     public Color dyingLight = Color.red;
@@ -14,6 +14,7 @@ public class CastleManager : MonoBehaviour
     void Awake()
     {
         healthyLight = light.color;
+        CastleHealth = maxCastleHealth;
     }
 
     public void TakeDamage(int damage)

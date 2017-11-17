@@ -20,7 +20,6 @@ public class ControllerGrabObject : MonoBehaviour
     private void Awake()
     {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
-        holding = false;
     }
 
     private void SetCollidingObject(Collider col)
