@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int health = 100;
+    public int health = 25;
     public int deathTime = 3;
 
     public bool dead = false;
