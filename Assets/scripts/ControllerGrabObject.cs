@@ -149,7 +149,7 @@ public class ControllerGrabObject : MonoBehaviour
         {
             GameObject orb = Instantiate(orbPrefab, GameObject.FindGameObjectWithTag("staff").transform.position, GameObject.FindGameObjectWithTag("staff").transform.rotation) as GameObject;
             //orb.transform.position = GameObject.FindGameObjectWithTag("staff").transform.position + new Vector3(0, 1.5f, 0);
-            orb.GetComponent<Rigidbody>().AddForce(transform.forward * 10);
+            orb.GetComponent<Rigidbody>().AddForce(GameObject.FindGameObjectWithTag("staff").transform.up * 1000);
             DestroyObject(orb, 5);
         }
     }
