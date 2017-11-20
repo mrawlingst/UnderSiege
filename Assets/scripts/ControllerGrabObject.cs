@@ -9,6 +9,8 @@ public class ControllerGrabObject : MonoBehaviour
     private GameObject collidingObject;
     private GameObject objectInHand;
 
+    public GameObject orbPrefab;
+
     private SteamVR_Controller.Device Controller
     {
         get
@@ -141,6 +143,13 @@ public class ControllerGrabObject : MonoBehaviour
             staff.transform.localRotation = Quaternion.Euler(0, 0, 0);
             staff.GetComponent<Rigidbody>().velocity = Vector3.zero;
             staff.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        }
+
+        if (RightController.GetPressDown(SteamVR_Controller.ButtonMask.Grip))
+        {
+            GameObject orb = Instantiate(orbPrefab);
+            orb.transform.position = new Vector3(0, 5, -5);
+            //DestroyObject(orb, 5);
         }
     }
 }
