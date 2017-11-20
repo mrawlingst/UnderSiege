@@ -145,11 +145,12 @@ public class ControllerGrabObject : MonoBehaviour
             staff.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         }
 
-        if (RightController.GetPressDown(SteamVR_Controller.ButtonMask.Grip))
+        if (RightController.GetPressDown(SteamVR_Controller.ButtonMask.Grip) && objectInHand)
         {
             GameObject orb = Instantiate(orbPrefab);
-            orb.transform.position = new Vector3(0, 5, -5);
-            //DestroyObject(orb, 5);
+            orb.transform.position = GameObject.FindGameObjectWithTag("staff").transform.position + new Vector3(0, 1.5f, 0);
+            orb.GetComponent<Rigidbody>().velocity = Vector3.forward;
+            DestroyObject(orb, 5);
         }
     }
 }
