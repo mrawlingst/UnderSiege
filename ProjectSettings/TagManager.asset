@@ -9,6 +9,8 @@ TagManager:
   - projectile
   - enemyattack
   - pickup
+  - sword
+  - staff
   layers:
   - Default
   - TransparentFX
