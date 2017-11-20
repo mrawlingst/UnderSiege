@@ -147,9 +147,9 @@ public class ControllerGrabObject : MonoBehaviour
 
         if (RightController.GetPressDown(SteamVR_Controller.ButtonMask.Grip) && objectInHand)
         {
-            GameObject orb = Instantiate(orbPrefab);
-            orb.transform.position = GameObject.FindGameObjectWithTag("staff").transform.position + new Vector3(0, 1.5f, 0);
-            orb.GetComponent<Rigidbody>().velocity = Vector3.forward;
+            GameObject orb = Instantiate(orbPrefab, GameObject.FindGameObjectWithTag("staff").transform.position, GameObject.FindGameObjectWithTag("staff").transform.rotation) as GameObject;
+            //orb.transform.position = GameObject.FindGameObjectWithTag("staff").transform.position + new Vector3(0, 1.5f, 0);
+            orb.GetComponent<Rigidbody>().AddForce(transform.forward * 10);
             DestroyObject(orb, 5);
         }
     }
