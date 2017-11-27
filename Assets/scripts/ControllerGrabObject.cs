@@ -125,27 +125,28 @@ public class ControllerGrabObject : MonoBehaviour
         //    }
         //}
 
-        if (LeftController.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
-        {
-            GameObject sword = GameObject.FindGameObjectWithTag("sword");
-            sword.GetComponent<Rigidbody>().useGravity = false;
-            sword.transform.localPosition = new Vector3(-2f, 0, -1.5f);
-            sword.transform.localRotation = Quaternion.Euler(0, -180, 0);
-            sword.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            sword.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        }
+        //if (LeftController.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
+        //{
+        //    GameObject sword = GameObject.FindGameObjectWithTag("sword");
+        //    sword.GetComponent<Rigidbody>().useGravity = false;
+        //    sword.transform.localPosition = new Vector3(-2f, 0, -1.5f);
+        //    sword.transform.localRotation = Quaternion.Euler(0, -180, 0);
+        //    sword.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //    sword.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        //}
 
-        if (RightController.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
-        {
-            GameObject staff = GameObject.FindGameObjectWithTag("staff");
-            staff.GetComponent<Rigidbody>().useGravity = false;
-            staff.transform.localPosition = new Vector3(-4f, -0.25f, -1.5f);
-            staff.transform.localRotation = Quaternion.Euler(0, 0, 0);
-            staff.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            staff.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        }
+        //if (RightController.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
+        //{
+        //    GameObject staff = GameObject.FindGameObjectWithTag("staff");
+        //    staff.GetComponent<Rigidbody>().useGravity = false;
+        //    staff.transform.localPosition = new Vector3(-4f, -0.25f, -1.5f);
+        //    staff.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        //    staff.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //    staff.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        //}
 
-        if (RightController.GetPressDown(SteamVR_Controller.ButtonMask.Grip) && objectInHand)
+        //if (RightController.GetPressDown(SteamVR_Controller.ButtonMask.T) && objectInHand)
+        if (RightController.GetHairTrigger())
         {
             GameObject orb = Instantiate(orbPrefab, GameObject.FindGameObjectWithTag("staff").transform.position, GameObject.FindGameObjectWithTag("staff").transform.rotation) as GameObject;
             //orb.transform.position = GameObject.FindGameObjectWithTag("staff").transform.position + new Vector3(0, 1.5f, 0);
