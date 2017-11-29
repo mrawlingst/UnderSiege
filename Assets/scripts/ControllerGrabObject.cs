@@ -11,6 +11,10 @@ public class ControllerGrabObject : MonoBehaviour
 
     public GameObject orbPrefab;
 
+    private bool canFireStaff = true;
+    public float staffCooldownTime;
+    private float cooldownTimeLeft;
+
     private SteamVR_Controller.Device Controller
     {
         get
@@ -105,49 +109,32 @@ public class ControllerGrabObject : MonoBehaviour
 
     private void Update()
     {
-        if (Controller.GetHairTriggerDown())
-        {
-            if (collidingObject && !objectInHand)
-            {
-                GrabObject();
-            }
-            else if (objectInHand)
-            {
-                ReleaseObject();
-            }
-        }
-
-        //if (Controller.GetHairTriggerUp())
+        //if (Controller.GetHairTriggerDown())
         //{
-        //    if (objectInHand)
+        //    if (collidingObject && !objectInHand)
+        //    {
+        //        GrabObject();
+        //    }
+        //    else if (objectInHand)
         //    {
         //        ReleaseObject();
         //    }
         //}
 
-        //if (LeftController.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
-        //{
-        //    GameObject sword = GameObject.FindGameObjectWithTag("sword");
-        //    sword.GetComponent<Rigidbody>().useGravity = false;
-        //    sword.transform.localPosition = new Vector3(-2f, 0, -1.5f);
-        //    sword.transform.localRotation = Quaternion.Euler(0, -180, 0);
-        //    sword.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        //    sword.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        //}
-
-        //if (RightController.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
-        //{
-        //    GameObject staff = GameObject.FindGameObjectWithTag("staff");
-        //    staff.GetComponent<Rigidbody>().useGravity = false;
-        //    staff.transform.localPosition = new Vector3(-4f, -0.25f, -1.5f);
-        //    staff.transform.localRotation = Quaternion.Euler(0, 0, 0);
-        //    staff.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        //    staff.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        //}
-
-        //if (RightController.GetPressDown(SteamVR_Controller.ButtonMask.T) && objectInHand)
-        if (RightController.GetHairTrigger())
+        if (!canFireStaff)
         {
+            cooldownTimeLeft += Time.deltaTime;
+            if (cooldownTimeLeft >= staffCooldownTime)
+            {
+                canFireStaff = true;
+                cooldownTimeLeft = 0;
+            }
+        }
+
+        if (RightController.GetHairTrigger() && canFireStaff)
+        {
+            canFireStaff = false;
+            cooldownTimeLeft = staffCooldownTime;
             GameObject orb = Instantiate(orbPrefab, GameObject.FindGameObjectWithTag("staff").transform.position, GameObject.FindGameObjectWithTag("staff").transform.rotation) as GameObject;
             //orb.transform.position = GameObject.FindGameObjectWithTag("staff").transform.position + new Vector3(0, 1.5f, 0);
             orb.GetComponent<Rigidbody>().AddForce(GameObject.FindGameObjectWithTag("staff").transform.up * 1000);
