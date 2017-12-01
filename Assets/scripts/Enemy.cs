@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int health = 25;
+    public int health = 3;
     public int deathTime = 3;
 
     public bool dead = false;
@@ -26,12 +26,26 @@ public class Enemy : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        health -= 10;
+        var dmg = other.gameObject.GetComponent<Damage>();
+
+        if (dmg)
+        {
+            health -= dmg.damage;
+        }
+        else
+        {
+            health -= 1;
+        }
 
         if (health <= 0)
         {
             GetComponent<Animator>().Play("Death");
             Destroy(gameObject, 10);
+        }
+
+        if (other.gameObject.name == "Orb")
+        {
+            Destroy(other.gameObject);
         }
     }
 
