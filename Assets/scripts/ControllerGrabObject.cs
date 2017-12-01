@@ -127,14 +127,14 @@ public class ControllerGrabObject : MonoBehaviour
             if (cooldownTimeLeft >= staffCooldownTime)
             {
                 canFireStaff = true;
-                cooldownTimeLeft = 0;
+                cooldownTimeLeft = staffCooldownTime;
             }
         }
 
         if (RightController.GetHairTrigger() && canFireStaff)
         {
             canFireStaff = false;
-            cooldownTimeLeft = staffCooldownTime;
+            cooldownTimeLeft = 0.0f;
             GameObject orb = Instantiate(orbPrefab, GameObject.FindGameObjectWithTag("staff").transform.position, GameObject.FindGameObjectWithTag("staff").transform.rotation) as GameObject;
             //orb.transform.position = GameObject.FindGameObjectWithTag("staff").transform.position + new Vector3(0, 1.5f, 0);
             orb.GetComponent<Rigidbody>().AddForce(GameObject.FindGameObjectWithTag("staff").transform.up * 1000);
