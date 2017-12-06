@@ -46,9 +46,10 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject, 10);
             GameObject manager = GameObject.FindGameObjectWithTag("manager");
             manager.GetComponent<Manager>().addScore(score);
+            GetComponent<CapsuleCollider>().enabled = false;
         }
 
-        if (other.gameObject.name == "Orb")
+        if (other.gameObject.tag == "projectile")
         {
             Destroy(other.gameObject);
         }

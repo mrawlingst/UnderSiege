@@ -11,9 +11,10 @@ public class ControllerGrabObject : MonoBehaviour
 
     public GameObject orbPrefab;
 
-    private bool canFireStaff = true;
-    public float staffCooldownTime;
-    private float cooldownTimeLeft;
+    public bool canFireStaff = true;
+    public float staffCooldownTime = 5f;
+    public float cooldownTimeLeft;
+    public float projSpeed = 1000;
 
     private SteamVR_Controller.Device Controller
     {
@@ -42,6 +43,7 @@ public class ControllerGrabObject : MonoBehaviour
     private void Awake()
     {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
+        cooldownTimeLeft = 0.0f;
     }
 
     private void SetCollidingObject(Collider col)
@@ -127,17 +129,17 @@ public class ControllerGrabObject : MonoBehaviour
             if (cooldownTimeLeft >= staffCooldownTime)
             {
                 canFireStaff = true;
-                cooldownTimeLeft = staffCooldownTime;
+                cooldownTimeLeft = 0.0f;
             }
         }
 
         if (RightController.GetHairTrigger() && canFireStaff)
         {
             canFireStaff = false;
-            cooldownTimeLeft = 0.0f;
+            //cooldownTimeLeft = 0.0f;
             GameObject orb = Instantiate(orbPrefab, GameObject.FindGameObjectWithTag("staff").transform.position, GameObject.FindGameObjectWithTag("staff").transform.rotation) as GameObject;
             //orb.transform.position = GameObject.FindGameObjectWithTag("staff").transform.position + new Vector3(0, 1.5f, 0);
-            orb.GetComponent<Rigidbody>().AddForce(GameObject.FindGameObjectWithTag("staff").transform.up * 1000);
+            orb.GetComponent<Rigidbody>().AddForce(GameObject.FindGameObjectWithTag("staff").transform.up * projSpeed);
             DestroyObject(orb, 5);
         }
     }

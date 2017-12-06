@@ -261,6 +261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4162590869961004}
   - component: {fileID: 136892987492623742}
+  - component: {fileID: 114958342976107144}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: enemyattack
@@ -403,7 +404,6 @@ GameObject:
   - component: {fileID: 195819992945360152}
   - component: {fileID: 114540227012672532}
   - component: {fileID: 114082102559853890}
-  - component: {fileID: 114126041744111322}
   m_Layer: 0
   m_Name: Boss
   m_TagString: boss
@@ -1280,18 +1280,6 @@ MonoBehaviour:
   deathTime: 3
   dead: 0
   score: 5
---- !u!114 &114126041744111322
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1553277382706890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24ea440b02111b5419130b0109198f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
 --- !u!114 &114540227012672532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1304,6 +1292,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal: {fileID: 1463328621907084, guid: aebb7fb843d627e44b891c68860d574e, type: 2}
+--- !u!114 &114958342976107144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1375411549724754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ea440b02111b5419130b0109198f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
 --- !u!136 &136323679778712204
 CapsuleCollider:
   m_ObjectHideFlags: 1
