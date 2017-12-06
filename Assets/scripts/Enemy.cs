@@ -8,6 +8,9 @@ public class Enemy : MonoBehaviour
     public int deathTime = 3;
 
     public bool dead = false;
+    public int score = 1;
+
+    //public GameObject manager;
 
 	void Start ()
     {
@@ -41,6 +44,8 @@ public class Enemy : MonoBehaviour
         {
             GetComponent<Animator>().Play("Death");
             Destroy(gameObject, 10);
+            GameObject manager = GameObject.FindGameObjectWithTag("manager");
+            manager.GetComponent<Manager>().addScore(score);
         }
 
         if (other.gameObject.name == "Orb")
