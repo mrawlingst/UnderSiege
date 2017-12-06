@@ -11,6 +11,8 @@ TagManager:
   - pickup
   - sword
   - staff
+  - manager
+  - boss
   layers:
   - Default
   - TransparentFX
