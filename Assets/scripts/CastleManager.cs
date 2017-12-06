@@ -36,7 +36,7 @@ public class CastleManager : MonoBehaviour
         if (other.gameObject.tag == "enemyattack")
         {
             Debug.Log("EnemyAttack");
-            TakeDamage(1);
+            TakeDamage(other.GetComponent<Damage>().damage);
         }
     }
 }
