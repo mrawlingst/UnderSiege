@@ -1108,7 +1108,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1081884124336092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6231079, y: 4.601633, z: 0.5059204}
+  m_LocalPosition: {x: -1.1399994, y: 1.1852093, z: -15.629272}
   m_LocalScale: {x: 12, y: 12, z: 12}
   m_Children:
   - {fileID: 4341353044155312}
@@ -1280,6 +1280,9 @@ MonoBehaviour:
   deathTime: 3
   dead: 0
   score: 1
+  swordHits:
+  - {fileID: 8300000, guid: 6b1b0b1f643cc0e4fa9156caea44def2, type: 3}
+  - {fileID: 8300000, guid: c3574b3ddb676124a897bea99011a13d, type: 3}
 --- !u!114 &114493239802276410
 MonoBehaviour:
   m_ObjectHideFlags: 1

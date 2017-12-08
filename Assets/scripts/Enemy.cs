@@ -10,11 +10,15 @@ public class Enemy : MonoBehaviour
     public bool dead = false;
     public int score = 1;
 
+    public AudioClip[] swordHits;
+
+    private AudioSource audioSource;
+    
     //public GameObject manager;
 
 	void Start ()
     {
-		
+        audioSource = GetComponent<AudioSource>();
 	}
 	
 	void Update ()
@@ -53,10 +57,24 @@ public class Enemy : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+
+        if (other.gameObject.tag == "sword")
+        {
+            playSwordHitSound();
+        }
     }
 
     public void OnTriggerExit(Collider other)
     {
         Debug.Log("LEFT COLLIDED");
+    }
+
+    private void playSwordHitSound()
+    {
+        int soundIndex = (int)(Mathf.Floor(Random.Range(0.001f, 2.999f)) % swordHits.Length);
+        audioSource.pitch = Random.Range(0.85f, 1.15f);
+        audioSource.volume = Random.Range(0.30f, 0.40f);
+        audioSource.clip = swordHits[soundIndex];
+        audioSource.Play();
     }
 }

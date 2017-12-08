@@ -9,6 +9,8 @@ public class ControllerGrabObject : MonoBehaviour
     private GameObject collidingObject;
     private GameObject objectInHand;
 
+    private AudioSource audioSource;
+
     public GameObject orbPrefab;
 
     public bool canFireStaff = true;
@@ -44,6 +46,7 @@ public class ControllerGrabObject : MonoBehaviour
     {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
         cooldownTimeLeft = 0.0f;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void SetCollidingObject(Collider col)
@@ -140,6 +143,7 @@ public class ControllerGrabObject : MonoBehaviour
             GameObject orb = Instantiate(orbPrefab, GameObject.FindGameObjectWithTag("staff").transform.position, GameObject.FindGameObjectWithTag("staff").transform.rotation) as GameObject;
             //orb.transform.position = GameObject.FindGameObjectWithTag("staff").transform.position + new Vector3(0, 1.5f, 0);
             orb.GetComponent<Rigidbody>().AddForce(GameObject.FindGameObjectWithTag("staff").transform.up * projSpeed);
+            audioSource.Play();
             DestroyObject(orb, 5);
         }
     }
